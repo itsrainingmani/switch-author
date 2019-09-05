@@ -1,0 +1,53 @@
+{
+	"name": "switch-author",
+	"version": "1.0.0",
+	"engines": {
+		"node": ">=8.0.0"
+	},
+	"description": "Change author information for a series of commits in a repo",
+	"main": "index.js",
+	"bin": {
+		"switch-author": "bin.js"
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"dev": "npm run build --watch",
+		"build": "rollup -c",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/itsrainingmani/switch-author.git"
+	},
+	"keywords": [
+		"switch",
+		"author",
+		"git"
+	],
+	"author": "Manikandan Sundararajan",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/itsrainingmani/switch-author/issues"
+	},
+	"homepage": "https://github.com/itsrainingmani/switch-author#readme",
+	"dependencies": {
+		"chalk": "^2.4.2",
+		"execa": "^2.0.4",
+		"mri": "^1.1.4"
+	},
+	"files": [
+		"index.js",
+		"bin.js",
+		"help.md"
+	],
+	"devDependencies": {
+		"eslint": "^6.3.0",
+		"eslint-config-prettier": "^6.2.0",
+		"eslint-plugin-import": "^2.18.2",
+		"prettier": "^1.18.2",
+		"rimraf": "^3.0.0",
+		"rollup": "^1.20.3",
+		"rollup-plugin-commonjs": "^10.1.0",
+		"source-map-support": "^0.5.13"
+	}
+}

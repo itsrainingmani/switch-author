@@ -35,19 +35,34 @@
 		"execa": "^2.0.4",
 		"mri": "^1.1.4"
 	},
-	"files": [
-		"index.js",
-		"bin.js",
-		"help.md"
-	],
 	"devDependencies": {
 		"eslint": "^6.3.0",
 		"eslint-config-prettier": "^6.2.0",
 		"eslint-plugin-import": "^2.18.2",
+		"husky": "^3.0.5",
+		"lint-staged": "^9.2.5",
 		"prettier": "^1.18.2",
 		"rimraf": "^3.0.0",
 		"rollup": "^1.20.3",
 		"rollup-plugin-commonjs": "^10.1.0",
 		"source-map-support": "^0.5.13"
+	},
+	"files": [
+		"index.js",
+		"bin.js",
+		"help.md"
+	],
+	"husky": {
+		"pre-commit": "lint-staged"
+	},
+	"lint-staged": {
+		"*.{js}": [
+			"eslint --fix",
+			"git add"
+		],
+		"*.{js, json, yml, md}": [
+			"prettier --write",
+			"git add"
+		]
 	}
 }

@@ -1,9 +1,10 @@
 // import fs from 'fs';
 // import path from 'path';
-import chalk from 'chalk';
 import mri from 'mri';
+import reauthor from './index';
+import stdWrite from './utils';
 
-process.stdout.write(chalk.green('Welcome to the switch-author tool\n'));
+stdWrite('Welcome to the switch-author tool', 'green');
 const args = mri(process.argv.slice(2), {
 	alias: {
 		n: 'name',
@@ -15,7 +16,12 @@ const args = mri(process.argv.slice(2), {
 const [name, email] = [args.name, args.email];
 
 if (args.help) {
-	process.stdout.write(`\nHELP STRING INCOMING\n`);
+	stdWrite(`\nHELP STRING INCOMING\n`, 'bold');
 } else {
-	process.stdout.write(`New name: ${name}\nNew email: ${email}`);
+	const r = reauthor({ name, email });
+	r.then(msg => {
+		stdWrite(msg, 'green');
+	}).catch(err => {
+		stdWrite(err, 'red');
+	});
 }

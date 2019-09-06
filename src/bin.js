@@ -1,5 +1,3 @@
-// import fs from 'fs';
-// import path from 'path';
 import mri from 'mri';
 import reauthor from './index';
 import stdWrite from './utils';
@@ -9,16 +7,19 @@ const args = mri(process.argv.slice(2), {
 	alias: {
 		n: 'name',
 		e: 'email',
-		d: 'depth'
+		c: 'commits'
+	},
+	default: {
+		commits: '*',
 	}
 });
 
-const [name, email] = [args.name, args.email];
-
 if (args.help) {
 	stdWrite(`\nHELP STRING INCOMING\n`, 'bold');
+} else if (args.name === undefined || args.email === undefined) {
+	stdWrite('Please provide both Name and Email for reauthoring', 'red');
 } else {
-	const r = reauthor({ name, email });
+	const r = reauthor(args);
 	r.then(msg => {
 		stdWrite(msg, 'green');
 	}).catch(err => {

@@ -1,4 +1,5 @@
 import mri from 'mri';
+import chalk from 'chalk';
 import reauthor from './index';
 import stdWrite from './utils';
 
@@ -15,7 +16,8 @@ const args = mri(process.argv.slice(2), {
 });
 
 if (args.help) {
-	stdWrite(`\nHELP STRING INCOMING\n`, 'bold');
+	process.stdout.write('\n' +
+		chalk.bold('switch-author') + '\nUsage:\nswitch-author --name <name> --email <email_address> [--commits <n>]\n');
 } else if (args.name === undefined || args.email === undefined) {
 	stdWrite('Please provide both Name and Email for reauthoring', 'red');
 } else {

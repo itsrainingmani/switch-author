@@ -8,16 +8,19 @@ const args = mri(process.argv.slice(2), {
 	alias: {
 		n: 'name',
 		e: 'email',
-		c: 'commits'
+		c: 'commits',
 	},
 	default: {
 		commits: '*',
-	}
+	},
 });
 
 if (args.help) {
-	process.stdout.write('\n' +
-		chalk.bold('switch-author') + '\nUsage:\nswitch-author --name <name> --email <email_address> [--commits <n>]\n');
+	process.stdout.write(
+		'\n' +
+		chalk.bold('switch-author') +
+		'\nUsage:\nswitch-author --name <name> --email <email_address> [--commits <n>]\n'
+	);
 } else if (args.name === undefined || args.email === undefined) {
 	stdWrite('Please provide both Name and Email for reauthoring', 'red');
 } else {
